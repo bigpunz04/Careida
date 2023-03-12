@@ -1,24 +1,20 @@
 package rpunzalan.careida.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 
 @NoArgsConstructor
 @Setter
 @Getter
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class CareEvent {
+public abstract class CareEvent { //made this class abstract - cannot create an instance of it.
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Enumerated(value = EnumType.STRING)
     private CareEventType type;

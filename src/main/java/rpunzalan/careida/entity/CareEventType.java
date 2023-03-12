@@ -1,5 +1,9 @@
 package rpunzalan.careida.entity;
 
 public enum CareEventType {
-    RIDE, REMINDER, PICKUP
+    RIDE,
+    REMINDER,
+    SUPPLY_PICKUP,
+    MESSAGE,
+    CALL
 }
