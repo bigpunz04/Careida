@@ -1,15 +1,20 @@
 package rpunzalan.careida.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Setter
 @Getter
 @Entity
+@Table(name = "CAREEVENTS", schema = "careida")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class CareEvent { //made this class abstract - cannot create an instance of it.
 
@@ -18,12 +23,14 @@ public abstract class CareEvent { //made this class abstract - cannot create an 
     private Long id;
     @Enumerated(value = EnumType.STRING)
     private CareEventType type;
-    private Long createdBy;
-    private Long createdFor;
+    private Member createdBy;
+    private Member createdFor;
+    @CreationTimestamp
     private LocalDateTime createdOn;
+    @UpdateTimestamp
     private LocalDateTime updatedOn;
 
-    public CareEvent(CareEventType type, Long createdBy, Long createdFor, LocalDateTime createdOn, LocalDateTime updatedOn) {
+    public CareEvent(CareEventType type, Member createdBy, Member createdFor, LocalDateTime createdOn, LocalDateTime updatedOn) {
         this.type = type;
         this.createdBy = createdBy;
         this.createdFor = createdFor;
