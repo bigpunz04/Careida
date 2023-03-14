@@ -5,12 +5,11 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Setter
 @Getter
 @Entity
@@ -29,6 +28,7 @@ public abstract class CareEvent { //made this class abstract - cannot create an 
     private LocalDateTime createdOn;
     @UpdateTimestamp
     private LocalDateTime updatedOn;
+
 
     public CareEvent(CareEventType type, Member createdBy, Member createdFor, LocalDateTime createdOn, LocalDateTime updatedOn) {
         this.type = type;

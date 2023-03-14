@@ -12,8 +12,7 @@ import rpunzalan.careida.entity.Member;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
-public class CareEventDto {
+public abstract class CareEventDto {
     private Long id;
     private CareEventType type;
     private Member createdBy;
