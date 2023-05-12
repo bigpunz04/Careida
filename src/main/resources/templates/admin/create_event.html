@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<div th:replace="admin/header :: headerFragment"></div>
+<body>
+<div th:replace="admin/header :: navbarFragment"></div>
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <br><br>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Create Event</h2>
+            </div>
+            <div class="card-body">
+
+                <form role="form" method="post" th:action="@{/admin/events}" th:object="${rideEvent}">
+                    <div class="mb-3">
+                        <label class="form-label">Choose Event Type</label>
+                        <select name="eventType" id="eventType" placeholder="Pick One" th:field="*{type}">
+                            <option value="Ride">Ride</option>
+                            <option value="SUPPLY_PICKUP">Supply Pickup</option>
+                        </select>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Created For</label>
+                        <select name="createdFor" class="form-control">
+                            <option th:each="createdFor : ${patientList}" th:text="${createdFor.firstName + createdFor.lastName}"/>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Created By</label>
+                        <select name="createdBy" class="form-control">
+                            <option th:each="createdBy : ${caregiverList}" th:text="${createdBy.firstName + createdBy.lastName}"/>
+                        </select>
+
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Event Date</label>
+                        <input
+                                type="date"
+                                class="form-control"
+                                id="eventDate"
+                                placeholder=""
+                                name="eventDate"
+                                th:field="*{eventDate}"
+                        />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

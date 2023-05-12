@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<div th:replace="admin/header :: headerFragment"></div>
+<body>
+<div th:replace="admin/header :: navbarFragment"></div>
+<br /><br />
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Create Member</h2>
+            </div>
+            <div class="card-body">
+                <form role="form" method="post" th:action="@{/admin/events/test}" th:object="${memberObj}">
+                    <div class="mb-3">
+                        <label class="form-label">First Name</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="firstName"
+                                placeholder=""
+                                name="firstName"
+                                th:field="*{firstName}"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="lastName"
+                                placeholder=""
+                                name="lastName"
+                                th:field="*{lastName}"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                placeholder=""
+                                name="email"
+                                th:field="*{email}"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input
+                                type="number"
+                                class="form-control"
+                                id="phone"
+                                placeholder=""
+                                name="phone"
+                                th:field="*{phone}"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Birthday</label>
+                        <input
+                                type="date"
+                                class="form-control"
+                                id="birthday"
+                                placeholder=""
+                                name="birthday"
+                                th:field="*{birthday}"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="role"
+                                placeholder=""
+                                name="role"
+                                th:field="*{role}"
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+<div th:replace="admin/footer :: footerFragment"></div>
+</body>
+</html>

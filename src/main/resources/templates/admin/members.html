@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<div th:replace="admin/header :: headerFragment"></div>
+<body>
+<div th:replace="admin/header :: navbarFragment"></div>
+
+<div class="container">
+  <div class="row">
+    <h1>Members</h1>
+    <ul>
+      <li>
+        <a th:href="@{/admin/members/newmember}">+
+        </a>
+      </li>
+    </ul>
+  </div>
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+    <th style="width: 5%">#</th>
+    <th style="width: 20%">ID</th>
+    <th style="width: 20%">First Name</th>
+    <th style="width: 20%">Last Name</th>
+    <th style="width: 20%">Role</th>
+    </thead>
+    <tbody>
+    <tr th:each="member, memberStat : ${membersList}">
+      <td th:text="${memberStat.count}"></td>
+      <td th:text="${member.id}"></td>
+      <td th:text="${member.firstName}"></td>
+      <td th:text="${member.lastName}"></td>
+      <td th:text="${member.role}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:replace="admin/footer :: footerFragment"></div>
+</body>
+</html>
