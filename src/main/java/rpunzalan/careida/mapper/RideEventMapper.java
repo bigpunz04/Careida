@@ -16,6 +16,7 @@ public class RideEventMapper {
         rideEventDto.setUpdatedOn(rideEvent.getUpdatedOn());
         rideEventDto.setNotes(rideEvent.getNotes());
         rideEventDto.setRoundTrip(rideEvent.isRoundTrip());
+        rideEventDto.setEventDate(rideEvent.getEventDate());
 
         return rideEventDto;
     }
@@ -32,6 +33,7 @@ public class RideEventMapper {
         rideEvent.setUpdatedOn(rideEventDto.getUpdatedOn());
         rideEvent.setNotes(rideEventDto.getNotes());
         rideEvent.setRoundTrip(rideEventDto.isRoundTrip());
+        rideEvent.setEventDate(rideEventDto.getEventDate());
 
         return rideEvent;
     }

@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -22,8 +23,12 @@ public abstract class CareEvent { //made this class abstract - cannot create an 
     private Long id;
     @Enumerated(value = EnumType.STRING)
     private CareEventType type;
+
+    @OneToOne
     private Member createdBy;
+    @OneToOne
     private Member createdFor;
+    private LocalDateTime eventDate;
     @CreationTimestamp
     private LocalDateTime createdOn;
     @UpdateTimestamp

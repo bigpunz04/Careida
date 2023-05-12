@@ -17,6 +17,7 @@ public abstract class CareEventDto {
     private CareEventType type;
     private Member createdBy;
     private Member createdFor;
+    private LocalDateTime eventDate;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
 }

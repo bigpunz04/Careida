@@ -1,13 +1,8 @@
 package rpunzalan.careida.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Lob;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.annotation.Resource;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 public class RideEvent extends CareEvent{
 
+    private transient Facility facility;
     private boolean roundTrip;
     @Lob
     @Column(columnDefinition = "longtext")
@@ -28,9 +24,17 @@ public class RideEvent extends CareEvent{
         this.notes = notes;
     }
 
-    public RideEvent(CareEventType type, Member createdBy, Member createdFor, LocalDateTime createdOn, LocalDateTime updatedOn, boolean roundTrip, String notes) {
-        super(type, createdBy, createdFor, createdOn, updatedOn);
+    public RideEvent(Facility facility, boolean roundTrip, String notes) {
+        this.facility = facility;
         this.roundTrip = roundTrip;
         this.notes = notes;
     }
+
+    public RideEvent(CareEventType type, Member createdBy, Member createdFor, LocalDateTime createdOn, LocalDateTime updatedOn, Facility facility, boolean roundTrip, String notes) {
+        super(type, createdBy, createdFor, createdOn, updatedOn);
+        this.facility = facility;
+        this.roundTrip = roundTrip;
+        this.notes = notes;
+    }
+
 }

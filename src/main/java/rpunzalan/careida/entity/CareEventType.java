@@ -5,5 +5,8 @@ public enum CareEventType {
     REMINDER,
     SUPPLY_PICKUP,
     MESSAGE,
-    CALL
+    CALL,
+    GIVE_MEDICATIONS,
+    MEAL,
+    HYGIENE
 }

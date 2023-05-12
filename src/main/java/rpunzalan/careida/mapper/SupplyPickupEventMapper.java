@@ -16,6 +16,7 @@ public class SupplyPickupEventMapper {
         supplyPickupEventDto.setUpdatedOn(supplyPickupEvent.getUpdatedOn());
         supplyPickupEventDto.setNotes(supplyPickupEvent.getNotes());
         supplyPickupEventDto.setShoppingList(supplyPickupEvent.getShoppingList());
+        supplyPickupEventDto.setEventDate(supplyPickupEvent.getEventDate());
 
         return supplyPickupEventDto;
     }
@@ -31,6 +32,7 @@ public class SupplyPickupEventMapper {
         supplyPickupEvent.setUpdatedOn(supplyPickupEventDto.getUpdatedOn());
         supplyPickupEvent.setNotes(supplyPickupEventDto.getNotes());
         supplyPickupEvent.setShoppingList(supplyPickupEventDto.getShoppingList());
+        supplyPickupEvent.setEventDate(supplyPickupEvent.getEventDate());
 
         return supplyPickupEvent;
     }

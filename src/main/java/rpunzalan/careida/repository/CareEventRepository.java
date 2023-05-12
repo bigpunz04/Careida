@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import rpunzalan.careida.entity.CareEvent;
 import rpunzalan.careida.entity.RideEvent;
 
-@Component("careEventRepository")
+//@Component("careEventRepository")
 @NoRepositoryBean
 public interface CareEventRepository extends JpaRepository<RideEvent, Long> {
 

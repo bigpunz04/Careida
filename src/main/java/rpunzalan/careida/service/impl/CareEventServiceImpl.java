@@ -1,8 +1,10 @@
 package rpunzalan.careida.service.impl;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import rpunzalan.careida.dto.CareEventDto;
 import rpunzalan.careida.dto.MemberDto;
@@ -15,22 +17,25 @@ import rpunzalan.careida.entity.SupplyPickupEvent;
 import rpunzalan.careida.mapper.MemberMapper;
 import rpunzalan.careida.mapper.RideEventMapper;
 import rpunzalan.careida.mapper.SupplyPickupEventMapper;
-import rpunzalan.careida.repository.CareEventRepository;
-import rpunzalan.careida.repository.MemberRepository;
-import rpunzalan.careida.repository.RideEventRepository;
-import rpunzalan.careida.repository.SupplyPickupEventRepository;
+import rpunzalan.careida.repository.*;
+
 import rpunzalan.careida.service.CareEventService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
 public class CareEventServiceImpl implements CareEventService {
 
-    private RideEventRepository rideEventRepository;
-    private SupplyPickupEventRepository supplyPickupEventRepository;
-    private MemberRepository memberRepository;
+    private final RideEventRepository rideEventRepository;
+    private final SupplyPickupEventRepository supplyPickupEventRepository;
+    private final MemberRepository memberRepository;
+
+    public CareEventServiceImpl(RideEventRepository rideEventRepository, SupplyPickupEventRepository supplyPickupEventRepository, MemberRepository memberRepository) {
+        this.rideEventRepository = rideEventRepository;
+        this.supplyPickupEventRepository = supplyPickupEventRepository;
+        this.memberRepository = memberRepository;
+    }
 
     @Override
     public List<RideEventDto> findAllRideEventDtos() {
@@ -53,6 +58,16 @@ public class CareEventServiceImpl implements CareEventService {
         List<Member> members = memberRepository.findAll();
 
         return members.stream().map((allMembers) -> MemberMapper.mapToMemberDto(allMembers)).collect(Collectors.toList());
+    }
+
+    @Override
+    public void createEvent(RideEventDto rideEventDto) {
+        rideEventRepository.save(RideEventMapper.mapToRideEvent(rideEventDto));
+    }
+
+    @Override
+    public void createEvent(SupplyPickupEventDto supplyPickupEventDto) {
+        supplyPickupEventRepository.save(SupplyPickupEventMapper.mapToSupplyPickupEvent(supplyPickupEventDto));
     }
 
 }
